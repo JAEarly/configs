@@ -1,0 +1,19 @@
+# $HOME/.config/alacritty/alacritty.toml
+
+[general]
+import = [
+  "~/.config/alacritty/catppuccin-mocha.toml"
+]
+
+[window]
+opacity = 0.9
+padding.x =5
+padding.y = 2
+startup_mode = "Windowed"
+
+[terminal]
+# Use `which zellij` to confirm path
+shell.program = "/snap/bin/zellij"
+
+[env]
+TERM = "xterm-256color"
