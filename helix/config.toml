@@ -1,0 +1,52 @@
+# $HOME/.config/helix/config.toml
+
+theme = "catppuccin_mocha"
+
+[editor]
+line-number = "relative"
+mouse = true
+cursorline = true
+color-modes = true
+auto-save = true
+bufferline = "multiple"
+true-color = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[editor.statusline]
+left = ["mode", "spinner", "file-name", "read-only-indicator", "file-modification-indicator"]
+center = []
+right = ["diagnostics", "selections", "register", "position", "file-encoding"]
+separator = "│"
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.lsp]
+display-messages = true
+display-inlay-hints = true
+
+[editor.indent-guides]
+render = true
+character = "│"
+
+[keys.normal]
+# Quick save
+C-s = ":w"
+# Quick quit
+C-q = ":q"
+i = "move_line_up"
+j = "move_char_left"
+k = "move_line_down"
+l = "move_char_right"
+";" = "insert_mode"
+
+[keys.insert]
+# Quick save in insert mode
+C-s = ["normal_mode", ":w"]

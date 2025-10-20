@@ -1,0 +1,37 @@
+# $HOME/.config/helix/languages.toml
+
+# Language-specific settings
+
+[[language]]
+name = "rust"
+auto-format = true
+formatter = { command = "rustfmt" }
+
+[[language]]
+name = "python"
+auto-format = true
+formatter = { command = "black", args = ["-"] }
+
+[[language]]
+name = "javascript"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+
+[[language]]
+name = "typescript"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+
+[[language]]
+name = "json"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "json"] }
+
+[[language]]
+name = "toml"
+auto-format = true
+
+[[language]]
+name = "markdown"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "markdown"] }
