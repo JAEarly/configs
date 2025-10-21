@@ -13,6 +13,9 @@ ln -sf $(pwd)/zed/settings.json ~/.config/zed/settings.json
 ln -sf $(pwd)/helix/config.toml ~/.config/helix/config.toml
 ln -sf $(pwd)/helix/languages.toml ~/.config/helix/languages.toml
 
+# Setup git config
+git config --global include.path $(pwd)/git/config
+
 # Setup bash extensions
 BASHRC_EXTENSION="source $(pwd)/bash/bashrc_extensions.sh"
 if ! grep -qF "$BASHRC_EXTENSION" ~/.bashrc; then

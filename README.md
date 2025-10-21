@@ -6,6 +6,7 @@ Personal configuration files for terminal tools.
 
 - **alacritty/** - Alacritty terminal emulator configuration
 - **zellij/** - Zellij terminal multiplexer configuration and themes
+- **git/** - Git configuration with custom aliases
 - **setup.sh** - Setup script to symlink configs to ~/.config
 
 ## Setup
