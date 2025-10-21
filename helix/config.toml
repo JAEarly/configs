@@ -46,7 +46,17 @@ j = "move_char_left"
 k = "move_line_down"
 l = "move_char_right"
 ";" = "insert_mode"
+# Disable arrow keys
+up = "no_op"
+down = "no_op"
+left = "no_op"
+right = "no_op"
 
 [keys.insert]
 # Quick save in insert mode
 C-s = ["normal_mode", ":w"]
+# Disable arrow keys
+up = "no_op"
+down = "no_op"
+left = "no_op"
+right = "no_op"

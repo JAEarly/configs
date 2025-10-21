@@ -6,6 +6,9 @@ mkdir -p ~/.config/alacritty ~/.config/zellij ~/.config/zed ~/.config/helix bash
 
 curl -LO --output-dir ~/.config/alacritty https://github.com/catppuccin/alacritty/raw/main/catppuccin-mocha.toml
 
+# Generate alacritty.toml with dynamic zellij path
+ZELLIJ_PATH=$(which zellij || echo "zellij")
+sed "s|__ZELLIJ_PATH__|$ZELLIJ_PATH|g" $(pwd)/alacritty/alacritty.toml.template > $(pwd)/alacritty/alacritty.toml
 ln -sf $(pwd)/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 ln -sf $(pwd)/zellij/config.kdl ~/.config/zellij/config.kdl
 ln -sf $(pwd)/zellij/layouts ~/.config/zellij/layouts
