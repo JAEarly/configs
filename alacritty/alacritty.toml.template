@@ -12,6 +12,16 @@ opacity = 1.0
 padding.x =5
 padding.y = 2
 startup_mode = "Windowed"
+option_as_alt = "Both"
+
+[keyboard]
+bindings = [
+  { key = "Left",  mods = "Alt",     chars = "\u001bB"   },
+  { key = "Right", mods = "Alt",     chars = "\u001bF"   },
+  { key = "Left",  mods = "Command", chars = "\u001bOH"  },
+  { key = "Right", mods = "Command", chars =  "\u001bOF" },
+  { key = "Back",  mods = "Command", chars = "\u0015"    },
+]
 
 [terminal]
 shell.program = "__ZELLIJ_PATH__"

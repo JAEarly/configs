@@ -137,10 +137,10 @@ keybinds clear-defaults=true {
         }
     }
     shared_except "locked" {
-        bind "Alt left" { MoveFocusOrTab "left"; }
-        bind "Alt down" { MoveFocus "down"; }
-        bind "Alt up" { MoveFocus "up"; }
-        bind "Alt right" { MoveFocusOrTab "right"; }
+        unbind "Alt Left"
+        unbind "Alt Down"
+        unbind "Alt Up"
+        unbind "Alt Right"
         bind "Alt +" { Resize "Increase"; }
         bind "Alt -" { Resize "Decrease"; }
         bind "Alt =" { Resize "Increase"; }
