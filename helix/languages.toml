@@ -9,7 +9,7 @@ formatter = { command = "rustfmt" }
 
 [[language]]
 name = "python"
-auto-format = true
+auto-format = false
 formatter = { command = "black", args = ["-"] }
 
 [[language]]
