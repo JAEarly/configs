@@ -11,6 +11,7 @@ formatter = { command = "rustfmt" }
 name = "python"
 auto-format = false
 formatter = { command = "black", args = ["-"] }
+language-servers = ["pyright"]
 
 [[language]]
 name = "javascript"
