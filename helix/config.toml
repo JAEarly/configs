@@ -31,16 +31,18 @@ mode.select = "SELECT"
 [editor.lsp]
 display-messages = true
 display-inlay-hints = true
+auto-signature-help = true
+display-signature-help-docs = true
 
 [editor.indent-guides]
 render = true
 character = "│"
 
 [keys.normal]
-# Quick save
-C-s = ":w"
 # Quick quit
 C-q = ":q"
+# Signature help
+C-s = "signature_help"
 i = "move_line_up"
 j = "move_char_left"
 k = "move_line_down"
@@ -54,8 +56,8 @@ left = "no_op"
 right = "no_op"
 
 [keys.insert]
-# Quick save in insert mode
-C-s = ["normal_mode", ":w"]
+# Signature help in insert mode
+C-s = "signature_help"
 # Disable arrow keys
 up = "no_op"
 down = "no_op"
