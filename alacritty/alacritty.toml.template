@@ -21,6 +21,12 @@ bindings = [
   { key = "Left",  mods = "Command", chars = "\u001bOH"  },
   { key = "Right", mods = "Command", chars =  "\u001bOF" },
   { key = "Back",  mods = "Command", chars = "\u0015"    },
+
+  # Vim-style navigation
+  { key = "I", mods = "Command", chars = "\u001b[A" },  # Up arrow (previous command)
+  { key = "K", mods = "Command", chars = "\u001b[B" },  # Down arrow (next command)
+  { key = "J", mods = "Command", chars = "\u001b[D" },  # Left arrow (cursor left)
+  { key = "L", mods = "Command", chars = "\u001b[C" },  # Right arrow (cursor right)
 ]
 
 [terminal]
