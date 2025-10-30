@@ -30,4 +30,15 @@ else
     echo "Bash extensions already in ~/.bashrc"
 fi
 
+# Setup zsh extensions
+ZSHRC_EXTENSION="source $(pwd)/zsh/zshrc_extensions.sh"
+if ! grep -qF "$ZSHRC_EXTENSION" ~/.zshrc; then
+    echo "" >> ~/.zshrc
+    echo "# Custom zsh extensions from dotfiles repo" >> ~/.zshrc
+    echo "$ZSHRC_EXTENSION" >> ~/.zshrc
+    echo "Added zsh extensions to ~/.zshrc"
+else
+    echo "Zsh extensions already in ~/.zshrc"
+fi
+
 echo "Done"
