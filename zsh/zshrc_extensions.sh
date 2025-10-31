@@ -14,3 +14,6 @@ virtualenv_info() {
 # This overrides the PS1 set by Nix/Home Manager
 setopt PROMPT_SUBST
 export PS1='%F{yellow}$(virtualenv_info)%f%F{cyan}%n@%m %2~ %f$ '
+
+# Aliases
+alias ll='ls -la'
