@@ -2,4 +2,4 @@
 	editor = hx
 
 [alias]
-	lg = log --graph --oneline --decorate --all --exclude=refs/heads/mike-docs --exclude=refs/remotes/*/mike-docs
+	lg = log --graph --oneline --decorate --exclude=refs/remotes/origin/mike-docs --all
