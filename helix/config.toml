@@ -58,6 +58,7 @@ right = "no_op"
 [keys.insert]
 # Signature help in insert mode
 C-s = "signature_help"
+S-tab = "unindent"
 # Disable arrow keys
 up = "no_op"
 down = "no_op"
