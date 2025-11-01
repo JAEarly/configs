@@ -43,6 +43,9 @@ character = "│"
 C-q = ":q"
 # Signature help
 C-s = "signature_help"
+# Swap jumplist navigation
+C-i = "jump_backward"
+C-o = "jump_forward"
 i = "move_line_up"
 j = "move_char_left"
 k = "move_line_down"
