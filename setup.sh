@@ -1,5 +1,13 @@
 #!/bin/bash
 
+echo "Checking dependencies..."
+
+# Install pyright if not available
+if ! command -v pyright-langserver &> /dev/null; then
+    echo "pyright-langserver not found, installing..."
+    npm install -g pyright
+fi
+
 echo "Linking configs..."
 
 mkdir -p ~/.config/alacritty ~/.config/zellij ~/.config/zed ~/.config/helix bash
