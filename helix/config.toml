@@ -10,6 +10,7 @@ color-modes = true
 auto-save = true
 bufferline = "multiple"
 true-color = true
+rulers = [120]
 
 [editor.cursor-shape]
 insert = "bar"
