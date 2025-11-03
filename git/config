@@ -3,3 +3,4 @@
 
 [alias]
 	lg = log --graph --oneline --decorate --exclude=refs/remotes/origin/mike-docs --all
+	count = "!f() { git rev-list --count $1..HEAD; }; f"
