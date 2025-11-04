@@ -53,6 +53,9 @@ k = "move_line_down"
 l = "move_char_right"
 h = "collapse_selection"
 ";" = "insert_mode"
+# Rebind delete keys
+d = "delete_selection_noyank"
+D = "delete_selection"
 # Disable arrow keys
 up = "no_op"
 down = "no_op"
