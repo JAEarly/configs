@@ -9,8 +9,8 @@ formatter = { command = "rustfmt" }
 
 [[language]]
 name = "python"
-auto-format = false
-formatter = { command = "black", args = ["-"] }
+auto-format = true
+formatter = { command = "ruff", args = ["format", "-"] }
 language-servers = ["pyright"]
 
 [language-server.pyright]
