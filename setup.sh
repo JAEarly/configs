@@ -2,6 +2,26 @@
 
 echo "Checking dependencies..."
 
+# Install Rust and Cargo if not available
+if ! command -v cargo &> /dev/null; then
+    echo "Rust and Cargo not found, installing..."
+    curl https://sh.rustup.rs -sSf | sh
+    echo "Rust and Cargo installed successfully"
+fi
+
+# Ensure Rust is on the path
+if [ -f "$HOME/.cargo/env" ]; then
+    source $HOME/.cargo/env
+fi
+
+# Update rustup
+echo "Updating rustup..."
+rustup update
+
+# Install codebook-lsp
+echo "Installing codebook-lsp..."
+cargo install codebook-lsp
+
 # Install pyright if not available
 if ! command -v pyright-langserver &> /dev/null; then
     echo "pyright-langserver not found, installing..."

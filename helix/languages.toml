@@ -2,16 +2,21 @@
 
 # Language-specific settings
 
+[language-server.codebook]
+command = "codebook-lsp"
+args = ["serve"]
+
 [[language]]
 name = "rust"
 auto-format = true
 formatter = { command = "rustfmt" }
+language-servers = ["codebook", "rust-analyzer"]
 
 [[language]]
 name = "python"
 auto-format = true
 formatter = { command = "ruff", args = ["format", "-"] }
-language-servers = ["pyright"]
+language-servers = ["codebook", "pyright"]
 
 [language-server.pyright]
 command = "pyright-langserver"
@@ -24,22 +29,27 @@ reportMissingTypeStubs = false
 name = "javascript"
 auto-format = true
 formatter = { command = "prettier", args = ["--parser", "typescript"] }
+language-servers = ["codebook", "typescript-language-server"]
 
 [[language]]
 name = "typescript"
 auto-format = true
 formatter = { command = "prettier", args = ["--parser", "typescript"] }
+language-servers = ["codebook", "typescript-language-server"]
 
 [[language]]
 name = "json"
 auto-format = true
 formatter = { command = "prettier", args = ["--parser", "json"] }
+language-servers = ["codebook"]
 
 [[language]]
 name = "toml"
 auto-format = true
+language-servers = ["codebook"]
 
 [[language]]
 name = "markdown"
 auto-format = true
 formatter = { command = "prettier", args = ["--parser", "markdown"] }
+language-servers = ["codebook"]
