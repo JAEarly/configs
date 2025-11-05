@@ -30,7 +30,7 @@ fi
 
 echo "Linking configs..."
 
-mkdir -p ~/.config/alacritty ~/.config/zellij ~/.config/zed ~/.config/helix bash
+mkdir -p ~/.config/alacritty ~/.config/zellij ~/.config/zed ~/.config/helix ~/.config/codebook
 
 curl -LO --output-dir ~/.config/alacritty https://github.com/catppuccin/alacritty/raw/main/catppuccin-mocha.toml
 
@@ -43,6 +43,7 @@ ln -sf $(pwd)/zellij/layouts ~/.config/zellij/layouts
 ln -sf $(pwd)/zed/settings.json ~/.config/zed/settings.json
 ln -sf $(pwd)/helix/config.toml ~/.config/helix/config.toml
 ln -sf $(pwd)/helix/languages.toml ~/.config/helix/languages.toml
+ln -sf $(pwd)/codebook/codebook.toml ~/.config/codebook/codebook.toml
 
 # Setup git config
 git config --global include.path $(pwd)/git/config
