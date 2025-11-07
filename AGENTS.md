@@ -21,11 +21,12 @@ configs/
 │   └── alacritty.toml  (generated)
 ├── zellij/             # Terminal multiplexer
 │   ├── config.kdl
-│   ├── layouts/
 │   └── catppuccin.kdl
 ├── helix/              # Text editor
 │   ├── config.toml
 │   └── languages.toml
+├── codebook/           # Spell checker
+│   └── codebook.toml
 ├── bash/               # Bash shell
 │   └── bashrc_extensions.sh
 ├── zsh/                # Zsh shell
@@ -40,12 +41,15 @@ configs/
 - **Terminal**: Alacritty (GPU-accelerated terminal emulator)
 - **Multiplexer**: Zellij (Rust-based terminal multiplexer with tabs and panes)
 - **Editor**: Helix (Modal text editor with built-in LSP support)
+- **Spell Checker**: Codebook (Code-aware spell checker with LSP integration)
+- **Language Servers**: pyright (Python), codebook-lsp (spell checking)
 - **Shells**: Bash and Zsh (dual shell support)
 - **Theme**: Catppuccin Mocha (consistent color scheme across all tools)
+- **Runtime Dependencies**: Rust/Cargo (for codebook-lsp), Node.js/npm (for pyright)
 
 ## Configuration File Formats
 
-- **TOML**: Alacritty and Helix configurations
+- **TOML**: Alacritty, Helix, and Codebook configurations
 - **KDL**: Zellij configuration (KDL Document Language)
 - **Shell Scripts**: Bash/Zsh extensions
 - **Git Config**: Standard git config format
@@ -70,6 +74,18 @@ Alacritty config uses template substitution for dynamic values:
 sed "s|__ZELLIJ_PATH__|$ZELLIJ_PATH|g" template > output
 ```
 
+## Setup Process
+
+The `setup.sh` script performs these operations in order:
+1. **Dependency installation**: Installs Rust/Cargo if not present, updates rustup
+2. **Tool installation**: Installs `codebook-lsp` via cargo and `pyright` via npm
+3. **Directory creation**: Creates necessary directories in `~/.config`
+4. **Theme download**: Downloads Catppuccin Mocha theme for Alacritty
+5. **Template processing**: Generates `alacritty.toml` from template with dynamic Zellij path
+6. **Symlink creation**: Links all config files to `~/.config`
+7. **Git configuration**: Sets up global include path for git config
+8. **Shell integration**: Adds sourcing lines to `~/.bashrc` and `~/.zshrc`
+
 ## Common Operations
 
 ### Adding a New Tool Configuration
@@ -93,9 +109,11 @@ sed "s|__ZELLIJ_PATH__|$ZELLIJ_PATH|g" template > output
 
 ### Dependencies
 - `alacritty.toml` → depends on `~/.config/alacritty/catppuccin-mocha.toml` (downloaded by setup.sh)
-- `zellij/config.kdl` → may reference `zellij/layouts/*` and `zellij/catppuccin.kdl`
+- `zellij/config.kdl` → references `zellij/catppuccin.kdl`
 - `helix/config.toml` ← → `helix/languages.toml` (complementary configs)
+- `helix/languages.toml` → references `codebook-lsp` and `pyright` (installed by setup.sh)
 - Shell RC files → `bash/bashrc_extensions.sh` or `zsh/zshrc_extensions.sh` (sourced)
+- `codebook/codebook.toml` → used by `codebook-lsp` language server
 
 ### Auto-Launch Chain
 Alacritty → launches Zellij automatically (configured in alacritty.toml via shell.program)
@@ -115,12 +133,15 @@ All tools use **Catppuccin Mocha** color scheme for visual consistency:
 
 ## Shell Extensions
 
-Both bash and zsh extensions likely contain:
+Both bash and zsh extensions contain:
+- **Keyboard remapping**: Caps Lock → Escape (via `setxkbmap -option caps:escape` on X11)
+- **direnv integration**: Automatic environment loading per directory
 - Custom aliases
 - Helper functions
 - Environment variables
-- Prompt customization
 - Tool integrations
+
+**Note**: The `setxkbmap` command works on X11 but not on Wayland. For Wayland, alternative configuration methods are needed.
 
 ## Git Configuration
 
@@ -153,7 +174,8 @@ Git uses global `include.path` to source configs from this repository, allowing:
 
 - **Primary Branch**: main
 - **Setup Method**: Executable shell script (setup.sh)
-- **Target OS**: macOS (Darwin) - may work on Linux with modifications
+- **Target OS**: Linux (primary), macOS (Darwin) - cross-platform compatible
+- **Display Server**: X11 (for keyboard remapping), Wayland support requires alternative configuration
 - **Version Control**: Git (repository itself is version-controlled)
 
 ## Common Questions
@@ -165,7 +187,7 @@ A: Symlinks allow editing configs in the repository while changes immediately ap
 A: Different systems and users prefer different shells. Supporting both maximizes compatibility.
 
 **Q: Can this be used on Linux?**
-A: Mostly yes, but `setup.sh` may need modifications for Linux-specific paths or package managers.
+A: Yes, this repository is primarily used on Linux. The keyboard remapping works on X11 but requires alternative configuration for Wayland.
 
 **Q: How to uninstall?**
 A: Remove symlinks from ~/.config, remove sourcing lines from shell RC files, and remove git include configuration.
@@ -185,4 +207,4 @@ This repository tracks its own changes via git. Check commit history for:
 - Bug fixes
 - Theme updates
 
-Last updated: 2025-10-30
+Last updated: 2025-11-07

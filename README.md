@@ -11,8 +11,11 @@ Personal configuration files for terminal tools and development environment.
 ### Editor
 - **helix/** - Helix text editor configuration and language server settings
 
+### Development Tools
+- **codebook/** - Codebook spell checker configuration for code and documentation
+
 ### Shell
-- **bash/** - Bash shell extensions and custom functions
+- **bash/** - Bash shell extensions and custom functions (includes caps lock → escape remapping)
 - **zsh/** - Zsh shell extensions and custom functions
 
 ### Version Control
@@ -30,6 +33,8 @@ Run the setup script to automatically configure your environment:
 ```
 
 This will:
+- Install Rust and Cargo (if not present)
+- Install codebook-lsp and pyright language servers
 - Create necessary config directories in ~/.config
 - Download Catppuccin Mocha theme for Alacritty
 - Symlink all configuration files to ~/.config
@@ -39,14 +44,17 @@ This will:
 ## Features
 
 - **Unified theme**: Catppuccin Mocha color scheme across terminal and editor
-- **Optimized keybindings**: Custom key mappings for efficient workflow
+- **Optimized keybindings**: Custom key mappings for efficient workflow (includes caps lock → escape remapping for vim-style editing)
 - **Shell enhancements**: Custom functions and aliases for bash and zsh
 - **Dynamic configuration**: Template-based configs adapt to your system paths
+- **Spell checking**: Integrated codebook configuration for code and documentation
 
 ## Requirements
 
 - Alacritty terminal emulator
 - Zellij terminal multiplexer
-- Helix text editor (optional)
+- Helix text editor
 - Git
+- Rust and Cargo (will be installed by setup.sh if not present)
+- Node.js and npm (for pyright language server)
 - curl (for theme download)

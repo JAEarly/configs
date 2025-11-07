@@ -30,7 +30,7 @@ fi
 
 echo "Linking configs..."
 
-mkdir -p ~/.config/alacritty ~/.config/zellij ~/.config/zed ~/.config/helix ~/.config/codebook
+mkdir -p ~/.config/alacritty ~/.config/zellij ~/.config/helix ~/.config/codebook
 
 curl -LO --output-dir ~/.config/alacritty https://github.com/catppuccin/alacritty/raw/main/catppuccin-mocha.toml
 
@@ -39,8 +39,6 @@ ZELLIJ_PATH=$(which zellij || echo "zellij")
 sed "s|__ZELLIJ_PATH__|$ZELLIJ_PATH|g" $(pwd)/alacritty/alacritty.toml.template > $(pwd)/alacritty/alacritty.toml
 ln -sf $(pwd)/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 ln -sf $(pwd)/zellij/config.kdl ~/.config/zellij/config.kdl
-ln -sf $(pwd)/zellij/layouts ~/.config/zellij/layouts
-ln -sf $(pwd)/zed/settings.json ~/.config/zed/settings.json
 ln -sf $(pwd)/helix/config.toml ~/.config/helix/config.toml
 ln -sf $(pwd)/helix/languages.toml ~/.config/helix/languages.toml
 ln -sf $(pwd)/codebook/codebook.toml ~/.config/codebook/codebook.toml

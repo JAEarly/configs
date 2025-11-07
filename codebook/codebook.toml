@@ -16,7 +16,7 @@ dictionaries = ["en_us", "en_gb"]
 # Custom allowlist of words to ignore (case-insensitive)
 # Codebook will add words here when you select "Add to dictionary"
 # Default: []
-words = ["codebook", "rustc", "unintuitive", "mypy", "Helsing", "krakenw", "plotly"]
+words = ["codebook", "rustc", "unintuitive", "mypy", "Helsing", "krakenw", "plotly", "TODO", "jearly"]
 
 # Words that should always be flagged as incorrect
 # Default: []
