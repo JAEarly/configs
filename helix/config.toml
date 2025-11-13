@@ -81,6 +81,9 @@ i = "extend_line_up"
 j = "extend_char_left"
 k = "extend_line_down"
 l = "extend_char_right"
+# Extend up/down 5 lines with Ctrl+i/k
+C-i = ["extend_line_up", "extend_line_up", "extend_line_up", "extend_line_up", "extend_line_up"]
+C-k = ["extend_line_down", "extend_line_down", "extend_line_down", "extend_line_down", "extend_line_down"]
 # Disable arrow keys
 up = "no_op"
 down = "no_op"
