@@ -18,9 +18,9 @@ fi
 echo "Updating rustup..."
 rustup update
 
-# Install codebook-lsp
-echo "Installing codebook-lsp..."
-cargo install codebook-lsp
+# Install typos-lsp
+echo "Installing typos-lsp..."
+cargo install --git https://github.com/tekumara/typos-lsp typos-lsp
 
 # Install pyright if not available
 if ! command -v pyright-langserver &> /dev/null; then
@@ -30,7 +30,7 @@ fi
 
 echo "Linking configs..."
 
-mkdir -p ~/.config/alacritty ~/.config/zellij ~/.config/helix ~/.config/codebook
+mkdir -p ~/.config/alacritty ~/.config/zellij ~/.config/helix
 
 curl -LO --output-dir ~/.config/alacritty https://github.com/catppuccin/alacritty/raw/main/catppuccin-mocha.toml
 
@@ -41,7 +41,6 @@ ln -sf $(pwd)/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 ln -sf $(pwd)/zellij/config.kdl ~/.config/zellij/config.kdl
 ln -sf $(pwd)/helix/config.toml ~/.config/helix/config.toml
 ln -sf $(pwd)/helix/languages.toml ~/.config/helix/languages.toml
-ln -sf $(pwd)/codebook/codebook.toml ~/.config/codebook/codebook.toml
 
 # Setup git config
 git config --global include.path $(pwd)/git/config

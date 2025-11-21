@@ -2,21 +2,21 @@
 
 # Language-specific settings
 
-[language-server.codebook]
-command = "codebook-lsp"
-args = ["serve"]
+[language-server.typos-lsp]
+command = "typos-lsp"
 
 [[language]]
 name = "rust"
 auto-format = true
 formatter = { command = "rustfmt" }
-language-servers = ["codebook", "rust-analyzer"]
+language-servers = ["typos-lsp", "rust-analyzer"]
 
 [[language]]
 name = "python"
 auto-format = true
-formatter = { command = "ruff", args = ["format", "-"] }
-language-servers = ["codebook", "pyright"]
+# formatter = { command = "ruff", args = ["format", "-"] }
+formatter = { command = "kw", args = ["r", "fmt"] }
+language-servers = ["pyright"]
 
 [language-server.pyright]
 command = "pyright-langserver"
@@ -29,27 +29,27 @@ reportMissingTypeStubs = false
 name = "javascript"
 auto-format = true
 formatter = { command = "prettier", args = ["--parser", "typescript"] }
-language-servers = ["codebook", "typescript-language-server"]
+language-servers = ["typos-lsp", "typescript-language-server"]
 
 [[language]]
 name = "typescript"
 auto-format = true
 formatter = { command = "prettier", args = ["--parser", "typescript"] }
-language-servers = ["codebook", "typescript-language-server"]
+language-servers = ["typos-lsp", "typescript-language-server"]
 
 [[language]]
 name = "json"
 auto-format = true
 formatter = { command = "prettier", args = ["--parser", "json"] }
-language-servers = ["codebook"]
+language-servers = ["typos-lsp"]
 
 [[language]]
 name = "toml"
 auto-format = true
-language-servers = ["codebook"]
+language-servers = ["typos-lsp"]
 
 [[language]]
 name = "markdown"
 auto-format = true
 formatter = { command = "prettier", args = ["--parser", "markdown"] }
-language-servers = ["codebook"]
+language-servers = ["typos-lsp"]
