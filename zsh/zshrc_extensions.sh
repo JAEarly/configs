@@ -8,5 +8,3 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Aliases
 alias ll='ls -la'
 
-# direnv hook
-eval "$(direnv hook zsh)"
