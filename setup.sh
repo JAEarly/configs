@@ -5,21 +5,16 @@ echo "Checking dependencies..."
 # Install Node.js and npm if not available
 if ! command -v npm &> /dev/null; then
     echo "npm not found, installing Node.js via nvm..."
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/latest/install.sh | bash
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 
     # Load nvm
-    export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    \. "$HOME/.nvm/nvm.sh"
 
     # Install LTS version of Node.js
     nvm install --lts
     nvm use --lts
     echo "Node.js and npm installed successfully"
 fi
-
-# Ensure npm is on the path
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # Install Rust and Cargo if not available
 if ! command -v cargo &> /dev/null; then
