@@ -37,6 +37,10 @@ curl -LO --output-dir ~/.config/alacritty https://github.com/catppuccin/alacritt
 # Generate alacritty.toml with dynamic zellij path
 ZELLIJ_PATH=$(which zellij || echo "zellij")
 sed "s|__ZELLIJ_PATH__|$ZELLIJ_PATH|g" $(pwd)/alacritty/alacritty.toml.template > $(pwd)/alacritty/alacritty.toml
+
+# Generate wezterm.lua with dynamic zellij path
+sed "s|__ZELLIJ_PATH__|$ZELLIJ_PATH|g" $(pwd)/wezterm/wezterm.lua.template > $(pwd)/wezterm/wezterm.lua
+
 ln -sf $(pwd)/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 ln -sf $(pwd)/wezterm/wezterm.lua ~/.config/wezterm/wezterm.lua
 ln -sf $(pwd)/zellij/config.kdl ~/.config/zellij/config.kdl
