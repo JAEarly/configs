@@ -2,6 +2,25 @@
 
 echo "Checking dependencies..."
 
+# Install Node.js and npm if not available
+if ! command -v npm &> /dev/null; then
+    echo "npm not found, installing Node.js via nvm..."
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/latest/install.sh | bash
+
+    # Load nvm
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+    # Install LTS version of Node.js
+    nvm install --lts
+    nvm use --lts
+    echo "Node.js and npm installed successfully"
+fi
+
+# Ensure npm is on the path
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
 # Install Rust and Cargo if not available
 if ! command -v cargo &> /dev/null; then
     echo "Rust and Cargo not found, installing..."
@@ -22,11 +41,9 @@ rustup update
 echo "Installing typos-lsp..."
 cargo install --git https://github.com/tekumara/typos-lsp typos-lsp
 
-# Install pyright if not available
-if ! command -v pyright-langserver &> /dev/null; then
-    echo "pyright-langserver not found, installing..."
-    npm install -g pyright
-fi
+# Install pyright
+echo "Installing pyright..."
+npm install -g pyright
 
 echo "Linking configs..."
 
