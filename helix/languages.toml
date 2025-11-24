@@ -14,8 +14,7 @@ language-servers = ["typos-lsp", "rust-analyzer"]
 [[language]]
 name = "python"
 auto-format = true
-# formatter = { command = "ruff", args = ["format", "-"] }
-formatter = { command = "kw", args = ["r", "fmt"] }
+formatter = { command = "ruff", args = ["format", "-"] }
 language-servers = ["pyright"]
 
 [language-server.pyright]
