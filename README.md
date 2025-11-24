@@ -35,9 +35,9 @@ Run the setup script to automatically configure your environment:
 
 This will:
 - Install Rust and Cargo (if not present)
-- Install codebook-lsp and pyright language servers
+- Install typos-lsp and pyright language servers
 - Create necessary config directories in ~/.config
-- Download Catppuccin Mocha theme for Alacritty
+- Download Catppuccin Mocha themes for Alacritty and Helix
 - Symlink all configuration files to ~/.config
 - Configure Git to include custom settings
 - Add shell extensions to ~/.bashrc and ~/.zshrc
@@ -58,4 +58,4 @@ This will:
 - Git
 - Rust and Cargo (will be installed by setup.sh if not present)
 - Node.js and npm (for pyright language server)
-- curl (for Alacritty theme download)
+- curl (for theme downloads)

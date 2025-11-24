@@ -30,9 +30,10 @@ fi
 
 echo "Linking configs..."
 
-mkdir -p ~/.config/alacritty ~/.config/wezterm ~/.config/zellij ~/.config/helix
+mkdir -p ~/.config/alacritty ~/.config/wezterm ~/.config/zellij ~/.config/helix ~/.config/helix/themes
 
 curl -LO --output-dir ~/.config/alacritty https://github.com/catppuccin/alacritty/raw/main/catppuccin-mocha.toml
+curl -LO --output-dir ~/.config/helix/themes https://github.com/catppuccin/helix/raw/main/themes/default/catppuccin_mocha.toml
 
 # Generate alacritty.toml with dynamic zellij path
 ZELLIJ_PATH=$(which zellij || echo "zellij")
