@@ -6,6 +6,7 @@ Personal configuration files for terminal tools and development environment.
 
 ### Terminal & Multiplexer
 - **alacritty/** - Alacritty terminal emulator configuration with Catppuccin Mocha theme
+- **wezterm/** - WezTerm terminal emulator configuration with Catppuccin Mocha theme
 - **zellij/** - Zellij terminal multiplexer configuration with custom layouts and themes
 
 ### Editor
@@ -51,10 +52,10 @@ This will:
 
 ## Requirements
 
-- Alacritty terminal emulator
+- Terminal emulator: Alacritty or WezTerm
 - Zellij terminal multiplexer
 - Helix text editor
 - Git
 - Rust and Cargo (will be installed by setup.sh if not present)
 - Node.js and npm (for pyright language server)
-- curl (for theme download)
+- curl (for Alacritty theme download)

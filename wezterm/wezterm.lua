@@ -1,0 +1,106 @@
+-- ~/.config/wezterm/wezterm.lua
+local wezterm = require 'wezterm'
+local config = wezterm.config_builder()
+
+-- Theme
+config.color_scheme = 'Catppuccin Mocha'
+
+-- Window settings
+config.window_padding = {
+  left = 5,
+  right = 5,
+  top = 2,
+  bottom = 2,
+}
+config.window_background_opacity = 1.0
+
+-- Tab bar settings
+config.hide_tab_bar_if_only_one_tab = true
+
+-- Default shell: launch zellij
+config.default_prog = { 'zellij' }
+
+-- Environment
+config.set_environment_variables = {
+  TERM = 'xterm-256color',
+}
+
+-- Keybindings
+config.keys = {
+  -- Alt + Arrow keys for word navigation
+  {
+    key = 'LeftArrow',
+    mods = 'OPT',
+    action = wezterm.action.SendString('\x1bB'),
+  },
+  {
+    key = 'RightArrow',
+    mods = 'OPT',
+    action = wezterm.action.SendString('\x1bF'),
+  },
+
+  -- Cmd + Arrow keys for line navigation
+  {
+    key = 'LeftArrow',
+    mods = 'CMD',
+    action = wezterm.action.SendString('\x1bOH'),
+  },
+  {
+    key = 'RightArrow',
+    mods = 'CMD',
+    action = wezterm.action.SendString('\x1bOF'),
+  },
+
+  -- Cmd + Backspace to delete line
+  {
+    key = 'Backspace',
+    mods = 'CMD',
+    action = wezterm.action.SendString('\x15'),
+  },
+
+  -- Vim-style navigation (Command modifier)
+  {
+    key = 'i',
+    mods = 'CMD',
+    action = wezterm.action.SendString('\x1b[A'),  -- Up arrow
+  },
+  {
+    key = 'k',
+    mods = 'CMD',
+    action = wezterm.action.SendString('\x1b[B'),  -- Down arrow
+  },
+  {
+    key = 'j',
+    mods = 'CMD',
+    action = wezterm.action.SendString('\x1b[D'),  -- Left arrow
+  },
+  {
+    key = 'l',
+    mods = 'CMD',
+    action = wezterm.action.SendString('\x1b[C'),  -- Right arrow
+  },
+
+  -- Vim-style navigation (Alt/Option modifier)
+  {
+    key = 'i',
+    mods = 'OPT',
+    action = wezterm.action.SendString('\x1b[A'),  -- Up arrow
+  },
+  {
+    key = 'k',
+    mods = 'OPT',
+    action = wezterm.action.SendString('\x1b[B'),  -- Down arrow
+  },
+  {
+    key = 'j',
+    mods = 'OPT',
+    action = wezterm.action.SendString('\x1b[D'),  -- Left arrow
+  },
+  {
+    key = 'l',
+    mods = 'OPT',
+    action = wezterm.action.SendString('\x1b[C'),  -- Right arrow
+  },
+}
+
+return config
