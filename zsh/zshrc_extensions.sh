@@ -7,4 +7,4 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # Aliases
 alias ll='ls -la'
-
+alias sc='hx ~/scratch.md'
