@@ -47,7 +47,9 @@ C-s = "signature_help"
 # Jumplist navigation with Ctrl+,/.
 "C-," = "jump_backward"
 "C-." = "jump_forward"
-# Move up/down 5 lines with Ctrl+i/k
+# Move up/down 5 lines
+C-u = ["move_line_up", "move_line_up", "move_line_up", "move_line_up", "move_line_up"]
+C-d = ["move_line_down", "move_line_down", "move_line_down", "move_line_down", "move_line_down"]
 C-i = ["move_line_up", "move_line_up", "move_line_up", "move_line_up", "move_line_up"]
 C-k = ["move_line_down", "move_line_down", "move_line_down", "move_line_down", "move_line_down"]
 i = "move_line_up"
@@ -81,9 +83,11 @@ i = "extend_line_up"
 j = "extend_char_left"
 k = "extend_line_down"
 l = "extend_char_right"
-# Extend up/down 5 lines with Ctrl+i/k
-C-i = ["extend_line_up", "extend_line_up", "extend_line_up", "extend_line_up", "extend_line_up"]
-C-k = ["extend_line_down", "extend_line_down", "extend_line_down", "extend_line_down", "extend_line_down"]
+# Extend up/down 5 lines
+C-u = ["extend_line_up", "extend_line_up", "extend_line_up", "extend_line_up", "extend_line_up"]
+C-d = ["extend_line_down", "extend_line_down", "extend_line_down", "extend_line_down", "extend_line_down"]
+A-i = ["extend_line_up", "extend_line_up", "extend_line_up", "extend_line_up", "extend_line_up"]
+A-k = ["extend_line_down", "extend_line_down", "extend_line_down", "extend_line_down", "extend_line_down"]
 # Disable arrow keys
 up = "no_op"
 down = "no_op"
