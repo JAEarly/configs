@@ -3,7 +3,7 @@
 # Custom zsh configurations from dotfiles repo
 
 # Add Cargo bin to PATH
-export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$HOME/.docker/bin:$PATH"
 
 # Aliases
 alias ll='ls -la'
