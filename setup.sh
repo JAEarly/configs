@@ -32,13 +32,25 @@ fi
 echo "Updating rustup..."
 rustup update
 
+# Install typos (required by typos-lsp)
+echo "Installing typos..."
+cargo install typos-cli
+
 # Install typos-lsp
 echo "Installing typos-lsp..."
 cargo install --git https://github.com/tekumara/typos-lsp typos-lsp
 
-# Install pyright
+# Install Python language server
 echo "Installing pyright..."
 npm install -g pyright
+
+# Install JavaScript/TypeScript tooling
+echo "Installing JavaScript/TypeScript language servers and formatters..."
+npm install -g typescript-language-server typescript prettier
+
+# Install ESLint language server (part of vscode-langservers-extracted)
+echo "Installing ESLint language server..."
+npm install -g vscode-langservers-extracted
 
 echo "Linking configs..."
 

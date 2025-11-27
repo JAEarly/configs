@@ -15,7 +15,7 @@ language-servers = ["typos-lsp", "rust-analyzer"]
 name = "python"
 auto-format = true
 formatter = { command = "ruff", args = ["format", "-"] }
-language-servers = ["pyright"]
+language-servers = ["typos-lsp", "pyright"]
 
 [language-server.pyright]
 command = "pyright-langserver"
@@ -24,17 +24,45 @@ args = ["--stdio"]
 [language-server.pyright.config]
 reportMissingTypeStubs = false
 
+[language-server.eslint]
+command = "vscode-eslint-language-server"
+args = ["--stdio"]
+
+[language-server.eslint.config]
+nodePath = ""
+onIgnoredFiles = "off"
+packageManager = "npm"
+quiet = false
+rulesCustomizations = []
+run = "onType"
+useESLintClass = false
+validate = "on"
+codeAction = { disableRuleComment = { enable = true, location = "separateLine" }, showDocumentation = { enable = true } }
+workingDirectory = { mode = "auto" }
+
 [[language]]
 name = "javascript"
 auto-format = true
 formatter = { command = "prettier", args = ["--parser", "typescript"] }
-language-servers = ["typos-lsp", "typescript-language-server"]
+language-servers = ["typos-lsp", "typescript-language-server", "eslint"]
 
 [[language]]
 name = "typescript"
 auto-format = true
 formatter = { command = "prettier", args = ["--parser", "typescript"] }
-language-servers = ["typos-lsp", "typescript-language-server"]
+language-servers = ["typos-lsp", "typescript-language-server", "eslint"]
+
+[[language]]
+name = "tsx"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+language-servers = ["typos-lsp", "typescript-language-server", "eslint"]
+
+[[language]]
+name = "jsx"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+language-servers = ["typos-lsp", "typescript-language-server", "eslint"]
 
 [[language]]
 name = "json"
