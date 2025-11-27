@@ -44,9 +44,11 @@ character = "│"
 C-q = ":q"
 # Signature help
 C-s = "signature_help"
-# Jumplist navigation with Ctrl+,/.
-"C-," = "jump_backward"
-"C-." = "jump_forward"
+# Jumplist navigation with Alt+,/. and Alt+</>
+"A-," = "jump_backward"
+"A-." = "jump_forward"
+"A-<" = "jump_backward"
+"A->" = "jump_forward"
 # Move up/down 5 lines
 C-u = ["move_line_up", "move_line_up", "move_line_up", "move_line_up", "move_line_up"]
 C-d = ["move_line_down", "move_line_down", "move_line_down", "move_line_down", "move_line_down"]
