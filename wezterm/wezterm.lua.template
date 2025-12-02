@@ -8,6 +8,9 @@ local config = wezterm.config_builder()
 -- Theme
 config.color_scheme = 'Catppuccin Mocha'
 
+-- Disable font ligatures
+config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
+
 -- Window settings
 config.window_padding = {
   left = 5,
