@@ -19,7 +19,6 @@ select = "underline"
 
 [editor.file-picker]
 hidden = false
-git-ignore = false
 
 [editor.statusline]
 left = ["mode", "spinner", "file-name", "read-only-indicator", "file-modification-indicator"]
