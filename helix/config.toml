@@ -10,7 +10,7 @@ color-modes = true
 auto-save = false
 bufferline = "multiple"
 true-color = true
-rulers = [120]
+rulers = [121]
 text-width = 120
 
 [editor.cursor-shape]
