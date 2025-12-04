@@ -43,31 +43,31 @@ workingDirectory = { mode = "auto" }
 [[language]]
 name = "javascript"
 auto-format = true
-formatter = { command = "prettier", args = ["--parser", "typescript"] }
+formatter = { command = "prettier", args = ["--parser", "typescript", "--print-width", "120"] }
 language-servers = ["typos-lsp", "typescript-language-server", "eslint"]
 
 [[language]]
 name = "typescript"
 auto-format = true
-formatter = { command = "prettier", args = ["--parser", "typescript"] }
+formatter = { command = "prettier", args = ["--parser", "typescript", "--print-width", "120"] }
 language-servers = ["typos-lsp", "typescript-language-server", "eslint"]
 
 [[language]]
 name = "tsx"
 auto-format = true
-formatter = { command = "prettier", args = ["--parser", "typescript"] }
+formatter = { command = "prettier", args = ["--parser", "typescript", "--print-width", "120"] }
 language-servers = ["typos-lsp", "typescript-language-server", "eslint"]
 
 [[language]]
 name = "jsx"
 auto-format = true
-formatter = { command = "prettier", args = ["--parser", "typescript"] }
+formatter = { command = "prettier", args = ["--parser", "typescript", "--print-width", "120"] }
 language-servers = ["typos-lsp", "typescript-language-server", "eslint"]
 
 [[language]]
 name = "json"
 auto-format = true
-formatter = { command = "prettier", args = ["--parser", "json"] }
+formatter = { command = "prettier", args = ["--parser", "json", "--print-width", "120"] }
 language-servers = ["typos-lsp"]
 
 [[language]]
@@ -78,5 +78,5 @@ language-servers = ["typos-lsp"]
 [[language]]
 name = "markdown"
 auto-format = true
-formatter = { command = "prettier", args = ["--parser", "markdown"] }
+formatter = { command = "prettier", args = ["--parser", "markdown", "--print-width", "120", "--prose-wrap", "always"] }
 language-servers = ["typos-lsp"]
