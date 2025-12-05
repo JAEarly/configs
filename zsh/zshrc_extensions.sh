@@ -15,6 +15,8 @@ export HELIX_RUNTIME="$HX_BASE/libexec/runtime"
 alias ll='ls -la'
 alias sc='hx ~/scratch.md'
 alias pc='pre-commit'
+alias pcr='pre-commit run'
+alias pcra='pre-commit run --all-files'
 
 # Source local extensions if they exist (not committed to git)
 LOCAL_EXTENSIONS="${0:a:h}/zshrc_extensions.local.sh"
