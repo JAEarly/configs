@@ -33,6 +33,13 @@ config.set_environment_variables = {
 
 -- Keybindings
 config.keys = {
+  -- Shift + Enter
+  {
+    key = 'Enter',
+    mods = 'SHIFT',
+    action = wezterm.action.SendString('\x1b\r'),
+  },
+
   -- Alt + Arrow keys for word navigation
   {
     key = 'LeftArrow',
