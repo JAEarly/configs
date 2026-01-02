@@ -1,4 +1,3 @@
-alacritty/alacritty.toml
 wezterm/wezterm.lua
 .claude/**
 zsh/zshrc_extensions.local.sh

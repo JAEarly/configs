@@ -59,11 +59,8 @@ mkdir -p ~/.config/alacritty ~/.config/wezterm ~/.config/zellij ~/.config/helix 
 curl -LO --output-dir ~/.config/alacritty https://github.com/catppuccin/alacritty/raw/main/catppuccin-mocha.toml
 curl -LO --output-dir ~/.config/helix/themes https://github.com/catppuccin/helix/raw/main/themes/default/catppuccin_mocha.toml
 
-# Generate alacritty.toml with dynamic zellij path
-ZELLIJ_PATH=$(which zellij || echo "zellij")
-sed "s|__ZELLIJ_PATH__|$ZELLIJ_PATH|g" $(pwd)/alacritty/alacritty.toml.template > $(pwd)/alacritty/alacritty.toml
-
 # Generate wezterm.lua with dynamic zellij path
+ZELLIJ_PATH=$(which zellij || echo "zellij")
 sed "s|__ZELLIJ_PATH__|$ZELLIJ_PATH|g" $(pwd)/wezterm/wezterm.lua.template > $(pwd)/wezterm/wezterm.lua
 
 ln -sf $(pwd)/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
