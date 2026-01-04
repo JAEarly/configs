@@ -73,17 +73,17 @@ config.keys = {
 
   -- Vim-style navigation (Command modifier)
   {
-    key = 'i',
+    key = 'k',
     mods = 'CMD',
     action = wezterm.action.SendString('\x1b[A'),  -- Up arrow
   },
   {
-    key = 'k',
+    key = 'j',
     mods = 'CMD',
     action = wezterm.action.SendString('\x1b[B'),  -- Down arrow
   },
   {
-    key = 'j',
+    key = 'h',
     mods = 'CMD',
     action = wezterm.action.SendString('\x1b[D'),  -- Left arrow
   },
@@ -95,17 +95,17 @@ config.keys = {
 
   -- Vim-style navigation (Alt/Option modifier)
   {
-    key = 'i',
+    key = 'k',
     mods = 'OPT',
     action = wezterm.action.SendString('\x1b[A'),  -- Up arrow
   },
   {
-    key = 'k',
+    key = 'j',
     mods = 'OPT',
     action = wezterm.action.SendString('\x1b[B'),  -- Down arrow
   },
   {
-    key = 'j',
+    key = 'h',
     mods = 'OPT',
     action = wezterm.action.SendString('\x1b[D'),  -- Left arrow
   },
