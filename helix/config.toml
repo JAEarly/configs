@@ -42,10 +42,6 @@ render = true
 character = "│"
 
 [keys.normal]
-# Quick quit
-C-q = ":q"
-# Signature help
-C-s = "signature_help"
 # Jumplist navigation with Alt+,/. and Alt+</>
 "A-," = "jump_backward"
 "A-." = "jump_forward"
@@ -54,17 +50,6 @@ C-s = "signature_help"
 # Move up/down 5 lines
 C-u = ["move_line_up", "move_line_up", "move_line_up", "move_line_up", "move_line_up"]
 C-d = ["move_line_down", "move_line_down", "move_line_down", "move_line_down", "move_line_down"]
-C-i = ["move_line_up", "move_line_up", "move_line_up", "move_line_up", "move_line_up"]
-C-k = ["move_line_down", "move_line_down", "move_line_down", "move_line_down", "move_line_down"]
-i = "move_line_up"
-j = "move_char_left"
-k = "move_line_down"
-l = "move_char_right"
-h = "collapse_selection"
-";" = "insert_mode"
-# Rebind delete keys
-d = "delete_selection_noyank"
-D = "delete_selection"
 # Disable arrow keys
 up = "no_op"
 down = "no_op"
@@ -72,9 +57,6 @@ left = "no_op"
 right = "no_op"
 
 [keys.insert]
-# Signature help in insert mode
-C-s = "signature_help"
-S-tab = "unindent"
 # Disable arrow keys
 up = "no_op"
 down = "no_op"
@@ -82,16 +64,9 @@ left = "no_op"
 right = "no_op"
 
 [keys.select]
-# ijkl movement in select mode
-i = "extend_line_up"
-j = "extend_char_left"
-k = "extend_line_down"
-l = "extend_char_right"
 # Extend up/down 5 lines
 C-u = ["extend_line_up", "extend_line_up", "extend_line_up", "extend_line_up", "extend_line_up"]
 C-d = ["extend_line_down", "extend_line_down", "extend_line_down", "extend_line_down", "extend_line_down"]
-A-i = ["extend_line_up", "extend_line_up", "extend_line_up", "extend_line_up", "extend_line_up"]
-A-k = ["extend_line_down", "extend_line_down", "extend_line_down", "extend_line_down", "extend_line_down"]
 # Disable arrow keys
 up = "no_op"
 down = "no_op"
