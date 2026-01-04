@@ -68,6 +68,7 @@ ln -sf $(pwd)/wezterm/wezterm.lua ~/.config/wezterm/wezterm.lua
 ln -sf $(pwd)/zellij/config.kdl ~/.config/zellij/config.kdl
 ln -sf $(pwd)/helix/config.toml ~/.config/helix/config.toml
 ln -sf $(pwd)/helix/languages.toml ~/.config/helix/languages.toml
+ln -sf $(pwd)/helix/ignore ~/.config/helix/ignore
 
 # Setup git config
 git config --global include.path $(pwd)/git/config

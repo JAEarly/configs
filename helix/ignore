@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pyo
+node_modules/
+.git/
+.DS_Store
+target/
+dist/
+build/
+.mypy_cache/
+.ruff_cache/
+.venv/
