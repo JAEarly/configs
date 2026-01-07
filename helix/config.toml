@@ -41,6 +41,12 @@ display-signature-help-docs = true
 render = true
 character = "│"
 
+[editor.soft-wrap]
+enable = false
+wrap-at-text-width = true
+max-wrap = 25
+max-indent-retain = 40
+
 [keys.normal]
 # Jumplist navigation with Alt+,/. and Alt+</>
 "A-," = "jump_backward"
