@@ -2,6 +2,18 @@
 
 echo "Checking dependencies..."
 
+# Install Rust and Cargo if not available
+if ! command -v cargo &> /dev/null; then
+    echo "Rust and Cargo not found, installing..."
+    curl https://sh.rustup.rs -sSf | sh
+    echo "Rust and Cargo installed successfully"
+fi
+
+# Ensure Rust is on the path
+if [ -f "$HOME/.cargo/env" ]; then
+    source $HOME/.cargo/env
+fi
+
 # Install Node.js and npm if not available
 if ! command -v npm &> /dev/null; then
     echo "npm not found, installing Node.js via nvm..."
@@ -16,21 +28,15 @@ if ! command -v npm &> /dev/null; then
     echo "Node.js and npm installed successfully"
 fi
 
-# Install Rust and Cargo if not available
-if ! command -v cargo &> /dev/null; then
-    echo "Rust and Cargo not found, installing..."
-    curl https://sh.rustup.rs -sSf | sh
-    echo "Rust and Cargo installed successfully"
-fi
-
-# Ensure Rust is on the path
-if [ -f "$HOME/.cargo/env" ]; then
-    source $HOME/.cargo/env
-fi
-
 # Update rustup
 echo "Updating rustup..."
 rustup update
+
+# Install zellij
+cargo install --locked zellij
+
+# Install helix
+sudo dnf install helix
 
 # Install typos (required by typos-lsp)
 echo "Installing typos..."
@@ -58,10 +64,6 @@ mkdir -p ~/.config/alacritty ~/.config/wezterm ~/.config/zellij ~/.config/helix 
 
 curl -LO --output-dir ~/.config/alacritty https://github.com/catppuccin/alacritty/raw/main/catppuccin-mocha.toml
 curl -LO --output-dir ~/.config/helix/themes https://github.com/catppuccin/helix/raw/main/themes/default/catppuccin_mocha.toml
-
-# Generate wezterm.lua with dynamic zellij path
-ZELLIJ_PATH=$(which zellij || echo "zellij")
-sed "s|__ZELLIJ_PATH__|$ZELLIJ_PATH|g" $(pwd)/wezterm/wezterm.lua.template > $(pwd)/wezterm/wezterm.lua
 
 ln -sf $(pwd)/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 ln -sf $(pwd)/wezterm/wezterm.lua ~/.config/wezterm/wezterm.lua
