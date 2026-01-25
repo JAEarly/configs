@@ -71,6 +71,7 @@ ln -sf $(pwd)/zellij/config.kdl ~/.config/zellij/config.kdl
 ln -sf $(pwd)/helix/config.toml ~/.config/helix/config.toml
 ln -sf $(pwd)/helix/languages.toml ~/.config/helix/languages.toml
 ln -sf $(pwd)/helix/ignore ~/.config/helix/ignore
+ln -sf $(pwd)/helix/themes/catppuccin_mocha_transparent.toml ~/.config/helix/themes/catppuccin_mocha_transparent.toml
 
 # Setup git config
 git config --global include.path $(pwd)/git/config

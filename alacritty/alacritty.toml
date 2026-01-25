@@ -6,8 +6,8 @@ import = [
 ]
 
 [window]
-opacity = 1.0
-padding.x =5
+opacity = 0.8
+padding.x = 2
 padding.y = 2
 startup_mode = "Windowed"
 option_as_alt = "None"
@@ -31,6 +31,8 @@ bindings = [
   { key = "J", mods = "Alt", chars = "\u001b[B" },  # Down arrow (next command)
   { key = "H", mods = "Alt", chars = "\u001b[D" },  # Left arrow (cursor left)
   { key = "L", mods = "Alt", chars = "\u001b[C" },  # Right arrow (cursor right)
+
+  { key = "Return", mods = "Shift", chars = "\u001b\r" },  # Shift+Enter for newline without executing (useful in Zellij/multi-line input)
 ]
 
 [terminal]
@@ -38,5 +40,9 @@ bindings = [
 shell.program = "/bin/bash"
 shell.args = ["-l"]
 
+[font]
+size = 9.0  # Default is 11.0, this is 2 steps down
+
 [env]
 TERM = "xterm-256color"
+
