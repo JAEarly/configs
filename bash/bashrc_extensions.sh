@@ -14,6 +14,7 @@ export HELIX_RUNTIME="$HX_BASE/libexec/runtime"
 
 # Aliases
 alias ll='ls -la'
+alias open='xdg-open'
 
 # Source local extensions if they exist (not committed to git)
 LOCAL_EXTENSIONS="$(dirname "${BASH_SOURCE[0]}")/bashrc_extensions.local.sh"
