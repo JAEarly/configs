@@ -10,20 +10,17 @@ Personal configuration files for terminal tools and development environment.
 - **zellij/** - Zellij terminal multiplexer configuration with custom layouts and themes
 
 ### Editor
-- **helix/** - Helix text editor configuration and language server settings
-
-### Development Tools
-- **codebook/** - Codebook spell checker configuration for code and documentation
+- **helix/** - Helix text editor configuration, language server settings, and custom transparent theme
 
 ### Shell
-- **bash/** - Bash shell extensions and custom functions (includes caps lock → escape remapping)
-- **zsh/** - Zsh shell extensions and custom functions
+- **bash/** - Bash shell extensions, aliases, and auto-launch Zellij
+- **zsh/** - Zsh shell extensions, aliases, and helper functions
 
 ### Version Control
 - **git/** - Git configuration with custom aliases and settings
 
 ### Setup
-- **setup.sh** - Automated setup script to symlink configs and initialize environment
+- **setup.sh** - Automated setup script to install tools, symlink configs, and initialize environment
 
 ## Installation
 
@@ -34,9 +31,11 @@ Run the setup script to automatically configure your environment:
 ```
 
 This will:
-- Install Node.js and npm via nvm (if not present)
 - Install Rust and Cargo via rustup (if not present)
-- Install typos-lsp and pyright language servers
+- Install Node.js and npm via nvm (if not present)
+- Install Zellij terminal multiplexer and Helix editor
+- Install language servers: typos-lsp, pyright, typescript-language-server, eslint
+- Install formatters: prettier
 - Create necessary config directories in ~/.config
 - Download Catppuccin Mocha themes for Alacritty and Helix
 - Symlink all configuration files to ~/.config
@@ -45,21 +44,23 @@ This will:
 
 ## Features
 
-- **Unified theme**: Catppuccin Mocha color scheme across terminal and editor
-- **Optimized keybindings**: Custom key mappings for efficient workflow (includes caps lock → escape remapping for vim-style editing)
-- **Shell enhancements**: Custom functions and aliases for bash and zsh
-- **Dynamic configuration**: Template-based configs adapt to your system paths
-- **Spell checking**: Integrated codebook configuration for code and documentation
+- **Unified theme**: Catppuccin Mocha color scheme across terminal and editor (with optional transparent variant for Helix)
+- **Optimized keybindings**: Custom key mappings for efficient workflow
+- **Shell enhancements**: Custom functions, aliases, and automatic Zellij session management
+- **Local extensions**: Support for machine-specific shell customizations (not version-controlled)
+- **Dynamic configuration**: Template-based WezTerm config adapts to your system paths
 
 ## Requirements
 
 - Terminal emulator: Alacritty or WezTerm
-- Zellij terminal multiplexer
-- Helix text editor
 - Git
 - curl (for downloads)
+- dnf package manager (for Helix installation on Fedora)
 
 The following will be installed automatically by setup.sh if not present:
 - Node.js and npm (via nvm)
 - Rust and Cargo (via rustup)
-- typos-lsp and pyright language servers
+- Zellij terminal multiplexer
+- Helix text editor
+- Language servers: typos-lsp, pyright, typescript-language-server, eslint
+- Formatters: prettier

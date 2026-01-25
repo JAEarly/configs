@@ -6,11 +6,6 @@ case $- in
   *) return ;;
 esac
 
-
-# Remap Caps Lock to Escape
-# setxkbmap -option caps:escape
-gsettings set org.gnome.desktop.input-sources xkb-options "['caps:escape']"
-
 # Helix runtime directory (for syntax highlighting queries)
 HX_BIN="$(which hx)"
 HX_LINK="$(readlink "$HX_BIN")"
@@ -19,6 +14,12 @@ export HELIX_RUNTIME="$HX_BASE/libexec/runtime"
 
 # Aliases
 alias ll='ls -la'
+
+# Source local extensions if they exist (not committed to git)
+LOCAL_EXTENSIONS="$(dirname "${BASH_SOURCE[0]}")/bashrc_extensions.local.sh"
+if [[ -f "$LOCAL_EXTENSIONS" ]]; then
+    source "$LOCAL_EXTENSIONS"
+fi
 
 # Automatically open Zellij when opening terminal
 if [[ -z "$ZELLIJ" ]] && [[ -z "$ZELLIJ_SESSION_NAME" ]]; then

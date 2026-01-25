@@ -1,4 +1,5 @@
 wezterm/wezterm.lua
 .claude/**
+bash/bashrc_extensions.local.sh
 zsh/zshrc_extensions.local.sh
 

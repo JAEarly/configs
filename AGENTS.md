@@ -17,20 +17,25 @@ This is a personal dotfiles repository containing configuration files for a term
 ```
 configs/
 ├── alacritty/          # Terminal emulator config
-│   ├── alacritty.toml.template
-│   └── alacritty.toml  (generated)
+│   └── alacritty.toml
+├── wezterm/            # Terminal emulator config (alternative)
+│   ├── wezterm.lua.template
+│   └── wezterm.lua     (generated, gitignored)
 ├── zellij/             # Terminal multiplexer
 │   ├── config.kdl
 │   └── catppuccin.kdl
 ├── helix/              # Text editor
 │   ├── config.toml
-│   └── languages.toml
-├── codebook/           # Spell checker
-│   └── codebook.toml
+│   ├── languages.toml
+│   ├── ignore
+│   └── themes/
+│       └── catppuccin_mocha_transparent.toml
 ├── bash/               # Bash shell
-│   └── bashrc_extensions.sh
+│   ├── bashrc_extensions.sh
+│   └── bashrc_extensions.local.sh  (gitignored, machine-specific)
 ├── zsh/                # Zsh shell
-│   └── zshrc_extensions.sh
+│   ├── zshrc_extensions.sh
+│   └── zshrc_extensions.local.sh   (gitignored, machine-specific)
 ├── git/                # Version control
 │   └── config
 └── setup.sh            # Setup orchestrator
@@ -38,14 +43,14 @@ configs/
 
 ## Key Technologies
 
-- **Terminal**: Alacritty (GPU-accelerated terminal emulator)
+- **Terminal**: Alacritty or WezTerm (GPU-accelerated terminal emulators)
 - **Multiplexer**: Zellij (Rust-based terminal multiplexer with tabs and panes)
 - **Editor**: Helix (Modal text editor with built-in LSP support)
-- **Spell Checker**: Codebook (Code-aware spell checker with LSP integration)
-- **Language Servers**: pyright (Python), codebook-lsp (spell checking)
+- **Language Servers**: typos-lsp (spell checking), pyright (Python), typescript-language-server (JS/TS), eslint
+- **Formatters**: prettier (JS/TS/JSON/etc.)
 - **Shells**: Bash and Zsh (dual shell support)
 - **Theme**: Catppuccin Mocha (consistent color scheme across all tools)
-- **Runtime Dependencies**: Rust/Cargo (for codebook-lsp), Node.js/npm (for pyright)
+- **Runtime Dependencies**: Rust/Cargo (for Zellij, typos-lsp), Node.js/npm (for pyright, TS tooling)
 
 ## Configuration File Formats
 
@@ -69,20 +74,25 @@ source /absolute/path/to/configs/bash/bashrc_extensions.sh
 ```
 
 ### 3. Template Processing
-Alacritty config uses template substitution for dynamic values:
+WezTerm config uses template substitution for dynamic values:
 ```bash
 sed "s|__ZELLIJ_PATH__|$ZELLIJ_PATH|g" template > output
 ```
 
+### 4. Local Extensions
+Shell configs support machine-specific customizations via local extension files that are gitignored:
+- `bash/bashrc_extensions.local.sh` - Sourced by bashrc_extensions.sh if present
+- `zsh/zshrc_extensions.local.sh` - Sourced by zshrc_extensions.sh if present
+
 ## Setup Process
 
 The `setup.sh` script performs these operations in order:
-1. **Dependency installation**: Installs Rust/Cargo if not present, updates rustup
-2. **Tool installation**: Installs `codebook-lsp` via cargo and `pyright` via npm
-3. **Directory creation**: Creates necessary directories in `~/.config`
-4. **Theme download**: Downloads Catppuccin Mocha theme for Alacritty
-5. **Template processing**: Generates `alacritty.toml` from template with dynamic Zellij path
-6. **Symlink creation**: Links all config files to `~/.config`
+1. **Dependency installation**: Installs Rust/Cargo and Node.js/npm if not present, updates rustup
+2. **Tool installation**: Installs Zellij via cargo, Helix via dnf
+3. **Language server installation**: Installs typos-cli, typos-lsp via cargo; pyright, typescript-language-server, prettier, eslint via npm
+4. **Directory creation**: Creates necessary directories in `~/.config`
+5. **Theme download**: Downloads Catppuccin Mocha theme for Alacritty and Helix
+6. **Symlink creation**: Links all config files to `~/.config` (including helix/ignore and custom theme)
 7. **Git configuration**: Sets up global include path for git config
 8. **Shell integration**: Adds sourcing lines to `~/.bashrc` and `~/.zshrc`
 
@@ -109,14 +119,16 @@ The `setup.sh` script performs these operations in order:
 
 ### Dependencies
 - `alacritty.toml` → depends on `~/.config/alacritty/catppuccin-mocha.toml` (downloaded by setup.sh)
+- `wezterm/wezterm.lua` → generated from `wezterm.lua.template` (gitignored)
 - `zellij/config.kdl` → references `zellij/catppuccin.kdl`
 - `helix/config.toml` ← → `helix/languages.toml` (complementary configs)
-- `helix/languages.toml` → references `codebook-lsp` and `pyright` (installed by setup.sh)
+- `helix/config.toml` → references `catppuccin_mocha_transparent` theme (custom transparent variant)
+- `helix/languages.toml` → references `typos-lsp` and `pyright` (installed by setup.sh)
 - Shell RC files → `bash/bashrc_extensions.sh` or `zsh/zshrc_extensions.sh` (sourced)
-- `codebook/codebook.toml` → used by `codebook-lsp` language server
+- Shell extensions → local extension files if present (gitignored, machine-specific)
 
 ### Auto-Launch Chain
-Alacritty → launches Zellij automatically (configured in alacritty.toml via shell.program)
+Shell (bash/zsh) → launches Zellij automatically (configured in shell extensions via `exec zellij`)
 
 ## Theme System
 
@@ -134,14 +146,13 @@ All tools use **Catppuccin Mocha** color scheme for visual consistency:
 ## Shell Extensions
 
 Both bash and zsh extensions contain:
-- **Keyboard remapping**: Caps Lock → Escape (via `setxkbmap -option caps:escape` on X11)
-- **direnv integration**: Automatic environment loading per directory
-- Custom aliases
-- Helper functions
-- Environment variables
-- Tool integrations
+- **Helix runtime setup**: Sets `HELIX_RUNTIME` environment variable for syntax highlighting
+- **Auto-launch Zellij**: Opens Zellij automatically when starting a terminal session
+- **Local extension support**: Sources `*_extensions.local.sh` files if present (for machine-specific config)
+- Custom aliases (e.g., `ll`, `sc`, `pc`, `pcr`, `pcra`)
+- PATH configuration (Cargo, Docker)
 
-**Note**: The `setxkbmap` command works on X11 but not on Wayland. For Wayland, alternative configuration methods are needed.
+The local extension files (`bashrc_extensions.local.sh`, `zshrc_extensions.local.sh`) are gitignored and can contain machine-specific settings like keyboard remapping, direnv integration, or custom environment variables.
 
 ## Git Configuration
 
@@ -174,8 +185,7 @@ Git uses global `include.path` to source configs from this repository, allowing:
 
 - **Primary Branch**: main
 - **Setup Method**: Executable shell script (setup.sh)
-- **Target OS**: Linux (primary), macOS (Darwin) - cross-platform compatible
-- **Display Server**: X11 (for keyboard remapping), Wayland support requires alternative configuration
+- **Target OS**: Linux (Fedora) - setup.sh uses dnf for Helix installation
 - **Version Control**: Git (repository itself is version-controlled)
 
 ## Common Questions
@@ -186,8 +196,8 @@ A: Symlinks allow editing configs in the repository while changes immediately ap
 **Q: Why both bash and zsh support?**
 A: Different systems and users prefer different shells. Supporting both maximizes compatibility.
 
-**Q: Can this be used on Linux?**
-A: Yes, this repository is primarily used on Linux. The keyboard remapping works on X11 but requires alternative configuration for Wayland.
+**Q: Can this be used on other Linux distros?**
+A: The configs work on any Linux distro, but setup.sh uses `dnf` for Helix installation which is Fedora-specific. Other distros would need to modify that step.
 
 **Q: How to uninstall?**
 A: Remove symlinks from ~/.config, remove sourcing lines from shell RC files, and remove git include configuration.
@@ -207,4 +217,4 @@ This repository tracks its own changes via git. Check commit history for:
 - Bug fixes
 - Theme updates
 
-Last updated: 2025-11-07
+Last updated: 2026-01-25
