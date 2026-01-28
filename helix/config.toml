@@ -58,6 +58,8 @@ C-u = ["move_line_up", "move_line_up", "move_line_up", "move_line_up", "move_lin
 C-d = ["move_line_down", "move_line_down", "move_line_down", "move_line_down", "move_line_down"]
 # Delete without copying
 d = "delete_selection_noyank"
+# Cut/change without copying
+c = "change_selection_noyank"
 # Disable arrow keys
 up = "no_op"
 down = "no_op"
@@ -82,3 +84,5 @@ left = "no_op"
 right = "no_op"
 # Delete without copying
 d = "delete_selection_noyank"
+# Cut/change without copying
+c = "change_selection_noyank"

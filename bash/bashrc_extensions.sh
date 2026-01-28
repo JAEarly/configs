@@ -6,14 +6,13 @@ case $- in
   *) return ;;
 esac
 
-# Helix runtime directory (for syntax highlighting queries)
-HX_BIN="$(which hx)"
-HX_LINK="$(readlink "$HX_BIN")"
-HX_BASE="$(cd $(dirname "$HX_BIN")/$(dirname $(dirname "$HX_LINK")) && pwd)"
-export HELIX_RUNTIME="$HX_BASE/libexec/runtime"
+# Source shared shell configuration
+SHARED_CONFIG="$(dirname "${BASH_SOURCE[0]}")/../shell_common.sh"
+if [[ -f "$SHARED_CONFIG" ]]; then
+    source "$SHARED_CONFIG"
+fi
 
-# Aliases
-alias ll='ls -la'
+# Bash-specific aliases
 alias open='xdg-open'
 
 # Source local extensions if they exist (not committed to git)

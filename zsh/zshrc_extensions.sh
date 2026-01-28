@@ -2,6 +2,12 @@
 
 # Custom zsh configurations from dotfiles repo
 
+# Source shared shell configuration
+SHARED_CONFIG="${0:a:h}/../shell_common.sh"
+if [[ -f "$SHARED_CONFIG" ]]; then
+    source "$SHARED_CONFIG"
+fi
+
 # Add Cargo bin to PATH
 export PATH="$HOME/.cargo/bin:$HOME/.docker/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
@@ -12,19 +18,6 @@ export PATH="$HOME/.local/bin:$PATH"
 # %30<...<%1~ shows only current directory name, truncated to 30 chars with "..." prefix when longer
 # %<< ends the truncation
 PROMPT='%n@%m %F{blue}%30<...<%1~%<<%f %# '
-
-# Helix runtime directory (for syntax highlighting queries)
-HX_BIN="$(which hx)"
-HX_LINK="$(readlink "$HX_BIN")"
-HX_BASE="$(cd $(dirname "$HX_BIN")/$(dirname $(dirname "$HX_LINK")) && pwd)"
-export HELIX_RUNTIME="$HX_BASE/libexec/runtime"
-
-# Aliases
-alias ll='ls -la'
-alias sc='hx ~/scratch.md'
-alias pc='pre-commit'
-alias pcr='pre-commit run'
-alias pcra='pre-commit run --all-files'
 
 # Source local extensions if they exist (not committed to git)
 LOCAL_EXTENSIONS="${0:a:h}/zshrc_extensions.local.sh"
