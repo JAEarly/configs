@@ -35,6 +35,9 @@ rustup update
 # Install zellij
 cargo install --locked zellij
 
+# Install delta (git diff viewer)
+cargo install git-delta
+
 # Install helix
 sudo dnf install helix
 
