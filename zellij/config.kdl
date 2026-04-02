@@ -158,7 +158,6 @@ keybinds clear-defaults=true {
         bind "Alt o" { MoveTab "right"; }
         bind "Alt p" { TogglePaneInGroup; }
         bind "Alt Shift p" { ToggleGroupMarking; }
-        bind "Ctrl q" { Quit; }
     }
     shared_except "locked" "move" {
         bind "Ctrl h" { SwitchToMode "move"; }
@@ -186,9 +185,9 @@ keybinds clear-defaults=true {
     shared_except "normal" "locked" "entersearch" {
         bind "enter" { SwitchToMode "normal"; }
     }
-    shared_except "normal" "locked" "entersearch" "renametab" "renamepane" {
-        bind "esc" { SwitchToMode "normal"; }
-    }
+    // shared_except "normal" "locked" "entersearch" "renametab" "renamepane" {
+        // bind "esc" { SwitchToMode "normal"; }
+    // }
     shared_among "pane" "tmux" {
         bind "x" { CloseFocus; SwitchToMode "normal"; }
     }
