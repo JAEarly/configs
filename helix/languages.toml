@@ -83,3 +83,12 @@ name = "yaml"
 auto-format = true
 formatter = { command = "prettier", args = ["--parser", "yaml", "--print-width", "120", "--prose-wrap", "always"] }
 language-servers = ["typos-lsp"]
+
+[language-server.omnisharp]
+command = "dotnet"
+args = ["/Users/joe.early/Software/omnisharp-osx-arm64-net6.0/OmniSharp.dll", "--languageserver"]
+
+[[language]]
+name = "c-sharp"
+auto-format = true
+language-servers = ["typos-lsp", "omnisharp"]
