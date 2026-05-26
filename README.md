@@ -1,25 +1,28 @@
 # configs
 
-Personal configuration files for terminal tools and development environment.
-
 ## Contents
 
 ### Terminal & Multiplexer
+
 - **alacritty/** - Alacritty terminal emulator configuration with Catppuccin Mocha theme
 - **wezterm/** - WezTerm terminal emulator configuration with Catppuccin Mocha theme
 - **zellij/** - Zellij terminal multiplexer configuration with custom layouts and themes
 
 ### Editor
+
 - **helix/** - Helix text editor configuration, language server settings, and custom transparent theme
 
 ### Shell
+
 - **bash/** - Bash shell extensions, aliases, and auto-launch Zellij
 - **zsh/** - Zsh shell extensions, aliases, and helper functions
 
 ### Version Control
+
 - **git/** - Git configuration with custom aliases and settings
 
 ### Setup
+
 - **setup.sh** - Automated setup script to install tools, symlink configs, and initialize environment
 
 ## Installation
@@ -31,6 +34,7 @@ Run the setup script to automatically configure your environment:
 ```
 
 This will:
+
 - Install Rust and Cargo via rustup (if not present)
 - Install Node.js and npm via nvm (if not present)
 - Install Zellij terminal multiplexer and Helix editor
@@ -44,7 +48,8 @@ This will:
 
 ## Features
 
-- **Unified theme**: Catppuccin Mocha color scheme across terminal and editor (with optional transparent variant for Helix)
+- **Unified theme**: Catppuccin Mocha color scheme across terminal and editor (with optional transparent variant for
+  Helix)
 - **Optimized keybindings**: Custom key mappings for efficient workflow
 - **Shell enhancements**: Custom functions, aliases, and automatic Zellij session management
 - **Local extensions**: Support for machine-specific shell customizations (not version-controlled)
@@ -58,6 +63,7 @@ This will:
 - dnf package manager (for Helix installation on Fedora)
 
 The following will be installed automatically by setup.sh if not present:
+
 - Node.js and npm (via nvm)
 - Rust and Cargo (via rustup)
 - Zellij terminal multiplexer
