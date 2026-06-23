@@ -36,9 +36,10 @@ Run the setup script to automatically configure your environment:
 This will:
 
 - Install Rust and Cargo via rustup (if not present)
+- Install uv via installer script (if not present)
 - Install Node.js and npm via nvm (if not present)
 - Install Zellij terminal multiplexer and Helix editor
-- Install language servers: typos-lsp, pyright, typescript-language-server, eslint
+- Install language servers: typos-lsp, ty, typescript-language-server, eslint
 - Install formatters: prettier
 - Create necessary config directories in ~/.config
 - Download Catppuccin Mocha themes for Alacritty and Helix
@@ -66,7 +67,8 @@ The following will be installed automatically by setup.sh if not present:
 
 - Node.js and npm (via nvm)
 - Rust and Cargo (via rustup)
+- uv (via installer script)
 - Zellij terminal multiplexer
 - Helix text editor
-- Language servers: typos-lsp, pyright, typescript-language-server, eslint
+- Language servers: typos-lsp, ty, typescript-language-server, eslint
 - Formatters: prettier

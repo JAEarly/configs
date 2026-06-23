@@ -14,6 +14,14 @@ if [ -f "$HOME/.cargo/env" ]; then
     source $HOME/.cargo/env
 fi
 
+# Install uv if not available
+if ! command -v uv &> /dev/null; then
+    echo "uv not found, installing..."
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+    source $HOME/.local/bin/env
+    echo "uv installed successfully"
+fi
+
 # Install Node.js and npm if not available
 if ! command -v npm &> /dev/null; then
     echo "npm not found, installing Node.js via nvm..."
@@ -50,8 +58,8 @@ echo "Installing typos-lsp..."
 cargo install --git https://github.com/tekumara/typos-lsp typos-lsp
 
 # Install Python language server
-echo "Installing pyright..."
-npm install -g pyright
+echo "Installing ty..."
+uv tool install ty
 
 # Install JavaScript/TypeScript tooling
 echo "Installing JavaScript/TypeScript language servers and formatters..."
