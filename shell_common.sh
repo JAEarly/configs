@@ -9,7 +9,7 @@ HX_BASE="$(cd $(dirname "$HX_BIN")/$(dirname $(dirname "$HX_LINK")) && pwd)"
 export HELIX_RUNTIME="$HX_BASE/libexec/runtime"
 
 # Common aliases
-alias ll='ls -la'
+alias ll='ls -lah'
 alias sc='hx ~/scratch.md'
 alias pc='pre-commit'
 alias pcr='pre-commit run'
