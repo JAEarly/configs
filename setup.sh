@@ -1,6 +1,16 @@
 #!/bin/bash
 
+# Detect OS
+OS="$(uname -s)"
+
 echo "Checking dependencies..."
+
+# Install Homebrew on macOS if not available
+if [ "$OS" = "Darwin" ] && ! command -v brew &> /dev/null; then
+    echo "Homebrew not found, installing..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo "Homebrew installed successfully"
+fi
 
 # Install Rust and Cargo if not available
 if ! command -v cargo &> /dev/null; then
@@ -47,7 +57,11 @@ cargo install --locked zellij
 cargo install git-delta
 
 # Install helix
-sudo dnf install helix
+if [ "$OS" = "Darwin" ]; then
+    brew install helix
+else
+    sudo dnf install helix
+fi
 
 # Install typos (required by typos-lsp)
 echo "Installing typos..."
