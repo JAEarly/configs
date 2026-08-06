@@ -15,11 +15,15 @@ language-servers = ["typos-lsp", "rust-analyzer"]
 name = "python"
 auto-format = true
 formatter = { command = "ruff", args = ["format", "--line-length", "120", "-"] }
-language-servers = ["typos-lsp", "ty"]
+language-servers = ["typos-lsp", "ty", "pyright"]
 
 [language-server.ty]
 command = "ty"
 args = ["server"]
+
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
 
 [language-server.eslint]
 command = "vscode-eslint-language-server"
