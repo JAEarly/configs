@@ -1,6 +1,7 @@
 #!/bin/sh
 
 # Shared shell configuration for both bash and zsh
+export COLORTERM=truecolor
 
 # Helix runtime directory (for syntax highlighting queries)
 HX_BIN="$(which hx)"

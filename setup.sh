@@ -75,6 +75,10 @@ cargo install --git https://github.com/tekumara/typos-lsp typos-lsp
 echo "Installing ty..."
 uv tool install ty
 
+# Install Markdown formatter
+echo "Installing mdformat..."
+uv tool install mdformat --with mdformat-gfm --with mdformat-tables --with mdformat-simple-breaks
+
 # Install JavaScript/TypeScript tooling
 echo "Installing JavaScript/TypeScript language servers and formatters..."
 npm install -g typescript-language-server typescript prettier
