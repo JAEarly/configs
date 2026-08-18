@@ -101,6 +101,7 @@ ln -sf $(pwd)/helix/config.toml ~/.config/helix/config.toml
 ln -sf $(pwd)/helix/languages.toml ~/.config/helix/languages.toml
 ln -sf $(pwd)/helix/ignore ~/.config/helix/ignore
 ln -sf $(pwd)/helix/themes/catppuccin_mocha_transparent.toml ~/.config/helix/themes/catppuccin_mocha_transparent.toml
+ln -sf $(pwd)/claude/CLAUDE.md ~/.claude/CLAUDE.md
 
 # Setup git config
 git config --global include.path $(pwd)/git/config
