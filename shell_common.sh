@@ -9,6 +9,9 @@ HX_LINK="$(readlink "$HX_BIN")"
 HX_BASE="$(cd $(dirname "$HX_BIN")/$(dirname $(dirname "$HX_LINK")) && pwd)"
 export HELIX_RUNTIME="$HX_BASE/libexec/runtime"
 
+# Copy stdin to local clipboard over SSH/zellij via OSC52
+cpy() { printf "\033]52;c;$(base64 -w0)\a"; }
+
 # Common aliases
 alias ll='ls -lah'
 alias sc='hx ~/scratch.md'
