@@ -21,6 +21,7 @@ alias pcra='pre-commit run --all-files'
 alias treee='tree -I "__pycache__|*.pyc|.git"'
 alias gc='git checkout'
 alias gcb='git checkout -b'
+alias gb='git branch'
 alias gs='git status -u'
 alias glg='git lg'
 alias ga='git add'
@@ -33,11 +34,9 @@ alias gps='git push'
 alias gpsf='git push --force-with-lease'
 alias gl='git log --oneline --graph --decorate HEAD main'
 
-# Branches, with worktree dir for branches checked out in other worktrees.
-# With args, plain git branch (gb -D xyz etc.)
-unalias gb gbv 2>/dev/null
-gb() {
-	[ $# -gt 0 ] && { git branch "$@"; return; }
+# Branches, with worktree dir for branches checked out in other worktrees
+unalias gbv 2>/dev/null
+gbv() {
 	git branch --color=always --format='%(if)%(HEAD)%(then)%(color:green)* %(else)%(if)%(worktreepath)%(then)%(color:cyan)+ %(else)%(color:default)  %(end)%(end)%(refname:short)%(color:reset)%(if)%(HEAD)%(then)%(else)%09%(worktreepath)%(end)' |
 		column -t -s "$(printf '\t')"
 }
